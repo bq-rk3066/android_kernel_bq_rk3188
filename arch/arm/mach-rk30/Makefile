@@ -1,5 +1,6 @@
 EXTRA_CFLAGS += -Os
 ifneq ($(CONFIG_RK_FPGA),y)
+obj-y += ../plat-rk/clock.o
 obj-$(CONFIG_ARCH_RK30XX) += clock_data.o
 obj-$(CONFIG_ARCH_RK3066B) += clock_data-rk3066b.o
 endif
@@ -11,6 +12,8 @@ obj-y += io.o
 ifeq ($(CONFIG_ARCH_RK30XX),y)
 obj-y += iomux.o
 obj-$(CONFIG_CPU_FREQ) += cpufreq.o
+else
+obj-$(CONFIG_CPU_FREQ) += ../mach-rk3188/cpufreq.o
 endif
 obj-y += pmu.o
 obj-y += reset.o
@@ -58,7 +61,3 @@ board-$(CONFIG_MACH_RK3168_86V_OLD) += board-rk3168-86v-old.o
 
 obj-$(CONFIG_SOC_RK3168M) += board.o
 board-$(CONFIG_MACH_RK3168M_TB) += board-rk3168m-tb.o
-
-board-$(CONFIG_MACH_RK3188_TB) += board-rk3168-tb.o
-board-$(CONFIG_MACH_RK3188_LR097) += board-rk3168-LR097.o
-board-$(CONFIG_MACH_RK3188_PHONEPAD) += board-rk3168-phonepad.o
