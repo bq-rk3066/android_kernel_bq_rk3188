@@ -7,6 +7,9 @@ obj-$(CONFIG_RK_PL330_DMA_TEST) += dma_memcpy_test.o
 obj-$(CONFIG_FIQ) += fiq.o
 obj-$(CONFIG_FIQ_DEBUGGER) += rk_fiq_debugger.o
 obj-$(CONFIG_RK_EARLY_PRINTK) += early_printk.o ../kernel/debug.o
+ifneq ($(CONFIG_RK_FPGA),y)
+obj-y += clock.o
+endif
 obj-y += mem_reserve.o
 obj-y += config.o
 obj-y += cpu.o
