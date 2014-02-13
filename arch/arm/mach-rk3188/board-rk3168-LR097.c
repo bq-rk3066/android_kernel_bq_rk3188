@@ -113,7 +113,11 @@
 #include <linux/mpu.h>
 #endif
 
+#if defined(CONFIG_BQ_D1004) && defined(CONFIG_BQ_D1014)
+#include "board-rk31-edison2qc-camera"
+#else
 #include "board-rk3168-LR097-camera.c"
+#endif
 
 #if defined(CONFIG_TOUCHSCREEN_GT8XX)
 #define TOUCH_RESET_PIN  RK30_PIN0_PB6
